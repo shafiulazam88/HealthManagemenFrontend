@@ -1,0 +1,34 @@
+"use client"
+import { getDoctors } from "@/app/(commonLayout)/consultations/_action";
+import { useQuery } from "@tanstack/react-query";
+
+
+ const DoctorList= ()=> {
+      const { data
+
+      } = useQuery({
+    queryKey: ['doctors'],
+    queryFn: () => getDoctors(),
+    })
+    console.log(data);
+
+  return (
+    <div>
+        {
+            data.data.map(
+                (doctor:any)=>(
+                    <div key={doctor.id}>
+                        {doctor.name}
+
+                   </div>
+                )
+            )
+        }
+        
+    </div>
+  );
+}
+export default DoctorList;
+
+
+
